@@ -9,8 +9,8 @@ class YaUploader:
 
     def upload(self, file_path: str):
         file_name = file_path
-        headers = {"Content-Type": "application/json", "Authorization": "OAuth {}".format(self.token)}
-        params = {"path": f"Загрузки/{file_name}", "overwrite": "true"}
+        headers = {"Content-Type": "application/json", "Authorization": "y0_AgAAAAAzcazzAADLWwAAAADrGNeeZhnMDds9S1eflh0n2119y-PC2bo".format(self.token)}
+        params = {"path": f"/{file_name}", "overwrite": "true"}
         upload_link = "https://cloud-api.yandex.net/v1/disk/resources/upload"
         get_upload_url = requests.get(upload_link, headers=headers, params=params)
         get_url = get_upload_url.json()
@@ -25,13 +25,13 @@ class YaUploader:
 
 if __name__ == "__main__":
 
-    f_name = "123.png"
-
-    path_to_file = os.path.join(os.getcwd(), f_name)
+    BASE_PATH = os.getcwd()
+    FILE = "123.png"
+    FULL_PATH_TOLOG = os.path.join(BASE_PATH, FILE)
 
     token = " "
     uploader = YaUploader(token)
 
-    print(f"Загружаем файл {path_to_file} на Яндекс.Диск")
-    result = uploader.upload(path_to_file)
+    print(f"Загружаем файл  на Яндекс.Диск")
+    result = uploader.upload(FILE)
     print(result)
