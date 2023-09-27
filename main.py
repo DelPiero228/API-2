@@ -24,10 +24,13 @@ class YaUploader:
 
 
 if __name__ == "__main__":
-
+    url = "https://cloud-api.yandex.net/v1/disk/resources/upload"
+    files = {"file": open("1.txt", "rb")}
+    r = requests.post(url, files=files)
     BASE_PATH = os.getcwd()
-    FILE = "123.png"
-    FULL_PATH_TOLOG = os.path.join(BASE_PATH, FILE)
+    FILE = "1.txt"
+    FULL_PATH_TOLOG = os.path.join(BASE_PATH,FILE)
+
 
     token = " "
     uploader = YaUploader(token)
